@@ -34,15 +34,15 @@ function ToastPlayground() {
   }, [toasts]);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className={styles.wrapper}>
-        <header>
-          <img alt="Cute toast mascot" src="/toast.png" />
-          <h1>Toast Playground</h1>
-        </header>
-        <ToastsContext.Provider value={value}>
-          <ToastShelf />
-        </ToastsContext.Provider>
+    <div className={styles.wrapper}>
+      <header>
+        <img alt="Cute toast mascot" src="/toast.png" />
+        <h1>Toast Playground</h1>
+      </header>
+      <ToastsContext.Provider value={value}>
+        <ToastShelf />
+      </ToastsContext.Provider>
+      <form onSubmit={handleSubmit}>
         <div className={styles.controlsWrapper}>
           <div className={styles.row}>
             <label
@@ -97,8 +97,8 @@ function ToastPlayground() {
             </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form >
+    </div>
   );
 }
 

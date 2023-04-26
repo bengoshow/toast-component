@@ -23,7 +23,6 @@ function Toast({ id, variant, children }) {
   const { toasts, setToasts } = React.useContext(ToastsContext);
   function handleClick() {
     const nextToasts = toasts.filter((toast) => {
-      console.log(toast.id, id)
       return toast.id !== id;
     });
     setToasts(nextToasts)
