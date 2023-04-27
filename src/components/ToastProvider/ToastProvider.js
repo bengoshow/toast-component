@@ -18,13 +18,16 @@ function ToastProvider({ children }) {
       ];
       setToasts(nextToasts);
     }
-    function deleteToast(id) {
+    function dismissToast(id) {
       const nextToasts = toasts.filter((toast) => {
         return toast.id !== id;
       });
       setToasts(nextToasts)
     }
-    return { toasts, setToasts, createToast, deleteToast };
+    function dismissAllToasts() {
+      setToasts([]);
+    }
+    return { toasts, setToasts, createToast, dismissToast, dismissAllToasts };
   }, [toasts]);
 
   return (

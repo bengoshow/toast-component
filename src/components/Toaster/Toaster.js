@@ -8,7 +8,7 @@ function Toaster() {
 
   const [message, setMessage] = React.useState('');
   const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0]);
-  const { createToast } = React.useContext(ToastsContext);
+  const { createToast, dismissAllToasts } = React.useContext(ToastsContext);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -18,6 +18,22 @@ function Toaster() {
     setVariant(VARIANT_OPTIONS[0])
     setMessage('')
   }
+
+  React.useEffect(() => {
+
+    function handleKeyDown(event) {
+      if (event.code === 'Escape') {
+        dismissAllToasts();
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+
+  }, [dismissAllToasts]);
 
   return (<form onSubmit={handleSubmit}>
     <div className={styles.controlsWrapper}>
