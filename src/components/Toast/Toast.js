@@ -8,7 +8,7 @@ import {
 } from 'react-feather';
 
 import VisuallyHidden from '../VisuallyHidden';
-import { ToastsContext } from '../ToastPlayground/ToastPlayground';
+import { ToastsContext } from '../ToastProvider/ToastProvider';
 import styles from './Toast.module.css';
 
 const ICONS_BY_VARIANT = {
