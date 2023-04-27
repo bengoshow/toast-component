@@ -7,9 +7,9 @@ function ToastProvider({ children }) {
 
   const [toasts, setToasts] = React.useState([]);
 
-  function dismissAllToasts() {
+  const dismissAllToasts = React.useCallback(() => {
     setToasts([]);
-  }
+  }, [])
 
   // Code to dismiss all toasts
   useEscapeKey(dismissAllToasts);
