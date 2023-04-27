@@ -8,20 +8,13 @@ function Toaster() {
 
   const [message, setMessage] = React.useState('');
   const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0]);
-  const { toasts, setToasts } = React.useContext(ToastsContext);
+  const { createToast } = React.useContext(ToastsContext);
 
   function handleSubmit(event) {
     event.preventDefault();
-    const nextToast = {
-      id: crypto.randomUUID(),
-      variant: variant,
-      message: message
-    }
-    const nextToasts = [
-      ...toasts,
-      nextToast
-    ];
-    setToasts(nextToasts);
+
+    createToast(variant, message);
+
     setVariant(VARIANT_OPTIONS[0])
     setMessage('')
   }

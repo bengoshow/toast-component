@@ -20,13 +20,8 @@ const ICONS_BY_VARIANT = {
 
 function Toast({ id, variant, children }) {
   const Icon = ICONS_BY_VARIANT[variant];
-  const { toasts, setToasts } = React.useContext(ToastsContext);
-  function handleClick() {
-    const nextToasts = toasts.filter((toast) => {
-      return toast.id !== id;
-    });
-    setToasts(nextToasts)
-  }
+  const { deleteToast } = React.useContext(ToastsContext);
+
   return (
     <div className={`${styles.toast} ${styles[variant]}`}>
       <div className={styles.iconContainer}>
@@ -35,7 +30,7 @@ function Toast({ id, variant, children }) {
       <p className={styles.content}>
         {children}
       </p>
-      <button className={styles.closeButton} onClick={handleClick}>
+      <button className={styles.closeButton} onClick={() => deleteToast(id)}>
         <X size={24} />
         <VisuallyHidden>Dismiss message</VisuallyHidden>
       </button>
